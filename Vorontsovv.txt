@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+
+
+
+//обчислення мінімальної кількості кроків між 2 числами
+unsigned int count_steps(unsigned int x, unsigned int y) {
+    unsigned int count = 0; // Лічильник кроків, ініціалізований нулем
+
+
+    while (x != y) { 
+        if (x < y) { 
+            if ((y - x) == 1 || (y - x) % 2 == 0) {
+                //якщо різниця між x та y є 1 або парним числом, збільшуємо x на 1
+                x++;
+            } else {
+                //якщо різниця між x та y є непарним числом, збільшуємо x на 2
+                x += 2;
+            }
+
+
+        } else { 
+
+
+            if ((x - y) == 1 || (x - y) % 2 == 0) {
+                
+
+
+                x--;
+            } else {
+                
+                x -= 2;
+            }
+        }
+
+        count++; 
+    }
+
+    return count; 
+}
+
+int main() {
+    unsigned int x, y;
+    printf("Введіть значення x: ");
+    scanf("%u", &x); 
+    printf("Введіть значення y: ");
+    scanf("%u", &y); // Зчитуємо значення y з консолі
+    unsigned int steps = count_steps(x, y); // Обчислення мінімальної кількості кроків
+    printf("Мінімальна кількість кроків: %u\n", steps); 
+
+    return 0;
+}
